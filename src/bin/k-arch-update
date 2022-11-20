@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+# Default configuration
+PACMAN_UPDATE=yes
+PACCACHE_CLEAR=no
+PACCACHE_KEEP=2
+FLATPAK_UPDATE=no
+
+CONFIG_FILE_GLOBAL="/etc/k-arch-update.conf"
+
+if [ -r "$CONFIG_FILE_GLOBAL" ]
+then
+    source "$CONFIG_FILE_GLOBAL"
+fi
+
+if [ "$PACMAN_UPDATE" = "yes" ]
+then
+    pacman -Syu
+fi
+
+if [ "$PACCACHE_CLEAR" = "yes" ]
+then
+    paccache -r -k $PACCACHE_KEEP
+fi
+
+if [ "$FLATPAK_UPDATE" = "yes" ]
+then
+    flatpak update -y
+fi
