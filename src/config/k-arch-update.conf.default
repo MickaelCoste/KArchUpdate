@@ -1,15 +1,21 @@
-# Configuration file for the k-arch-update script.
+## Configuration file for the k-arch-update script.
 
-# Pacman section
+## Pacman
+# Activate pacman updates. Possible values: yes, no
 PACMAN_UPDATE=yes
 
-# AUR section
+## AUR
+# Activate AUR packages updates. Possible values: yes, no
 AUR_UPDATE=no
+# Set the directory path to all AUR sources.
 AUR_SRC_DIRECTORY=~/.aur
 
-# -- Paccache section --
+## Paccache
+# Activate pacman cache clearing. Possible values: yes, no
 PACCACHE_CLEAR=no
+# Set the number of versions to keep for each package. See paccache -k option.
 PACCACHE_KEEP=2
 
-# -- Flatpak section --
+## Flatpak
+# Activate flatpak updates. Possible values: yes, no
 FLATPAK_UPDATE=no

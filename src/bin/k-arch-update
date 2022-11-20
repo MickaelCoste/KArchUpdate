@@ -17,7 +17,7 @@ fi
 
 if [ "$PACMAN_UPDATE" = "yes" ]
 then
-    sudo pacman -Syu
+    sudo pacman -Syu --noconfirm
 fi
 
 if [ "$AUR_UPDATE" = "yes" ]
