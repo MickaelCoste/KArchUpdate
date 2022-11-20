@@ -28,7 +28,7 @@ then
         if [ -d "$file" ]
         then
             cd "$file"
-            pwd
+            git pull
             makepkg -si --needed --noconfirm
         fi 
     done

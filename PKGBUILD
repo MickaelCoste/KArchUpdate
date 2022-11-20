@@ -1,6 +1,6 @@
 pkgname='k-arch-update'
-pkgver='0.2'
-pkgrel='2'
+pkgver='0.3'
+pkgrel='1'
 arch=('any')
 licence=('MIT')
 pkgdesc='Archlinux system update utility'
