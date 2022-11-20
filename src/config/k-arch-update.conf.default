@@ -3,6 +3,9 @@
 # Pacman section
 PACMAN_UPDATE=yes
 
+# AUR section
+AUR_UPDATE=no
+AUR_SRC_DIRECTORY=~/.aur
 
 # -- Paccache section --
 PACCACHE_CLEAR=no

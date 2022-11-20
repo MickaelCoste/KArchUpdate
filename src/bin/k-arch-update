@@ -2,6 +2,8 @@
 
 # Default configuration
 PACMAN_UPDATE=yes
+AUR_UPDATE=no
+AUR_SRC_DIRECTORY=~/.aur
 PACCACHE_CLEAR=no
 PACCACHE_KEEP=2
 FLATPAK_UPDATE=no
@@ -15,15 +17,29 @@ fi
 
 if [ "$PACMAN_UPDATE" = "yes" ]
 then
-    pacman -Syu
+    sudo pacman -Syu
+fi
+
+if [ "$AUR_UPDATE" = "yes" ]
+then
+    [[ ! -d "$AUR_SRC_DIRECTORY" ]] && mkdir -p "$AUR_SRC_DIRECTORY"
+    for file in $AUR_SRC_DIRECTORY/*
+    do
+        if [ -d "$file" ]
+        then
+            cd "$file"
+            pwd
+            makepkg -si --needed --noconfirm
+        fi 
+    done
 fi
 
 if [ "$PACCACHE_CLEAR" = "yes" ]
 then
-    paccache -r -k $PACCACHE_KEEP
+    sudo paccache -r -k $PACCACHE_KEEP
 fi
 
 if [ "$FLATPAK_UPDATE" = "yes" ]
 then
-    flatpak update -y
+    sudo flatpak update -y
 fi
