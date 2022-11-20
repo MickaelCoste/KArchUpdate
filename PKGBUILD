@@ -1,13 +1,12 @@
 pkgname='k-arch-update'
 pkgver='0.2'
-pkgrel='1'
+pkgrel='2'
 arch=('any')
 licence=('MIT')
 pkgdesc='Archlinux system update utility'
 depends=('sudo')
 optdepends=('pacman-contrib: Manage pacman package cache'
             'flatpak: Update flatpak packages')
-backup=('etc/k-arch-update.conf')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
