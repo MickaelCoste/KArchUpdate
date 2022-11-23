@@ -1,5 +1,5 @@
 pkgname='k-arch-update'
-pkgver='0.4'
+pkgver='0.5'
 pkgrel='1'
 arch=('any')
 licence=('MIT')

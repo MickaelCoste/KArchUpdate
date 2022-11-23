@@ -18,10 +18,13 @@ fi
 if [ "$PACMAN_UPDATE" = "yes" ]
 then
     sudo pacman -Syu --noconfirm
+elif [ "$PACMAN_UPDATE" != "no" ]
+    echo "Warning: PACMAN_UPDATE configuration value is invalid. Check your configuration file.Assuming 'no'."
 fi
 
 if [ "$AUR_UPDATE" = "yes" ]
 then
+    # Make sure the AUR directory exists
     [[ ! -d "$AUR_SRC_DIRECTORY" ]] && mkdir -p "$AUR_SRC_DIRECTORY"
     for file in $AUR_SRC_DIRECTORY/*
     do
@@ -32,14 +35,20 @@ then
             makepkg -si --needed --noconfirm
         fi 
     done
+elif [ "$AUR_UPDATE" != "no" ]
+    echo "Warning: AUR_UPDATE configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
 
 if [ "$PACCACHE_CLEAR" = "yes" ]
 then
     sudo paccache -r -k $PACCACHE_KEEP
+elif [ "$PACCACHE_CLEAR" != "no" ]
+    echo "Warning: PACCACHE_CLEAR configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
 
 if [ "$FLATPAK_UPDATE" = "yes" ]
 then
     sudo flatpak update -y
+elif [ "$FLATPAK_UPDATE" != "no" ]
+    echo "Warning: FLATPAK_UPDATE configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
