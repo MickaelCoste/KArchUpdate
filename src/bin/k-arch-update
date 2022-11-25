@@ -19,7 +19,8 @@ if [ "$PACMAN_UPDATE" = "yes" ]
 then
     sudo pacman -Syu --noconfirm
 elif [ "$PACMAN_UPDATE" != "no" ]
-    echo "Warning: PACMAN_UPDATE configuration value is invalid. Check your configuration file.Assuming 'no'."
+then
+    echo "Warning: PACMAN_UPDATE configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
 
 if [ "$AUR_UPDATE" = "yes" ]
@@ -36,6 +37,7 @@ then
         fi 
     done
 elif [ "$AUR_UPDATE" != "no" ]
+then
     echo "Warning: AUR_UPDATE configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
 
@@ -43,6 +45,7 @@ if [ "$PACCACHE_CLEAR" = "yes" ]
 then
     sudo paccache -r -k $PACCACHE_KEEP
 elif [ "$PACCACHE_CLEAR" != "no" ]
+then
     echo "Warning: PACCACHE_CLEAR configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
 
@@ -50,5 +53,6 @@ if [ "$FLATPAK_UPDATE" = "yes" ]
 then
     sudo flatpak update -y
 elif [ "$FLATPAK_UPDATE" != "no" ]
+then
     echo "Warning: FLATPAK_UPDATE configuration value is invalid. Check your configuration file. Assuming 'no'."
 fi
