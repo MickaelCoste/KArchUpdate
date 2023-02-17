@@ -27,14 +27,11 @@ if [ "$AUR_UPDATE" = "yes" ]
 then
     # Make sure the AUR directory exists
     [[ ! -d "$AUR_SRC_DIRECTORY" ]] && mkdir -p "$AUR_SRC_DIRECTORY"
-    for file in $AUR_SRC_DIRECTORY/*
+    for file in $(find $AUR_SRC_DIRECTORY -mindepth 1 -maxdepth 1 -type d -not -name '*.disabled')
     do
-        if [ -d "$file" ]
-        then
-            cd "$file"
-            git pull
-            makepkg -si --needed --noconfirm
-        fi 
+        cd "$file"
+        git pull
+        makepkg -si --needed --noconfirm
     done
 elif [ "$AUR_UPDATE" != "no" ]
 then
